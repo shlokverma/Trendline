@@ -1,6 +1,7 @@
 import requests
 import time
 import os  
+import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -40,4 +41,8 @@ while 'next_url' in data:
 
 
 
-print(len(tickers))
+
+# Export to CSV
+df = pd.DataFrame(tickers)
+df.to_csv('all_tickers.csv', index=False)
+print(f"Exported {len(tickers)} tickers to all_tickers.csv")
